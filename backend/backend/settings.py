@@ -69,7 +69,7 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     'http://localhost:5173',
     'django-vite.vercel.app',
-    'administration.pythonanywhere.com'
+    'jasoonprogrammer.pythonanywhere.com'
 ]
 
 CORS_ALLOW_CREDENTIALS = True
