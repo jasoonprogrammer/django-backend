@@ -82,7 +82,7 @@ class VariantPrice(models.Model):
         return self.option_1.variant.product
     
     def __str__(self):
-        return f"{self.option_1} {self.option_2 or ""} - {self.price}"
+        return f"{self.option_1} {self.option_2 or ''} - {self.price}"
     
 
 class FeatureProduct(models.Model):
