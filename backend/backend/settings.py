@@ -70,7 +70,7 @@ MIDDLEWARE = [
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     'http://localhost:5173',
-    'django-vite.vercel.app'
+    "https://django-vite.vercel.app"
     ]
 
 CORS_ALLOW_CREDENTIALS = True
