@@ -26,7 +26,9 @@ SECRET_KEY = 'django-insecure-l9^q)*3q$c4=!rrf*03x+6psl!b=gs02v07ar*s@n8_pnjcsp(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'jasoonprogrammer.pythonanywhere.com'
+]
 
 
 # Application definition
@@ -68,9 +70,8 @@ MIDDLEWARE = [
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     'http://localhost:5173',
-    'django-vite.vercel.app',
-    'jasoonprogrammer.pythonanywhere.com'
-]
+    'django-vite.vercel.app'
+    ]
 
 CORS_ALLOW_CREDENTIALS = True
 
