@@ -11,8 +11,17 @@ from rest_framework.decorators import api_view, permission_classes, authenticati
 from .permissions import *
 from django.utils import timezone
 from rest_framework.pagination import PageNumberPagination
+from .models import *
 # Create your views here.
     
+class UserCreateAPI(generics.CreateAPIView):
+    authentication_classes = []
+    serializer_class = UserSerializer
+
+class UserListAPI(generics.ListAPIView):
+    serializer_class = UserSerializer
+    queryset = User.objects.all()
+
 class CustomTokenObtainView(TokenObtainPairView):
     serializer_class = CustomTokenObtainPairSerializer
 
@@ -21,7 +30,7 @@ class ProductCreateAPI(generics.CreateAPIView):
     serializer_class = ProductSerializer
 
 class LargeResultsSetPagination(PageNumberPagination):
-    page_size = 12
+    page_size = 15
     page_size_query_param = 'page_size'
     max_page_size = 10000
 
@@ -44,7 +53,7 @@ class ProductUpdateAPI(generics.UpdateAPIView):
         return Response(serializer.data)
  
 class FeatureImagePagination(PageNumberPagination):
-    page_size = 2
+    page_size = 4
     page_size_query_param = 'page_size'
     max_page_size = 10000
 
@@ -77,3 +86,15 @@ def update_count(request, pk):
     item.save()
     serializer = FetureProductSerializer(item)
     return Response(serializer.data)
+
+
+class CategoryProductListAPI(generics.ListAPIView):
+    authentication_classes = []
+    serializer_class = ProductSerializer
+    pagination_class = LargeResultsSetPagination
+    def get_queryset(self):
+        products = Product.objects.filter(category__name = self.kwargs['category'])
+        return products
+    
+class TokenVerifyAPI(generics.UpdateAPIView):
+    permission_classes = [IsAuthenticated]

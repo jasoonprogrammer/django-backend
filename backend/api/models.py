@@ -22,11 +22,12 @@ class User(AbstractUser):
     image = ResizedImageField(size = [300, 300], default = "profile_images/default.png", upload_to = "profile_images", crop = ['middle', 'center'])
     birthdate = models.DateField(validators = [legal_age])
     address = models.TextField(null = True, blank = True)
-    email = models.EmailField(unique = True)
 
     USERNAME_FIELD = "username"
-    REQUIRED_FIELDS = ['first_name', 'last_name', 'birthdate', 'email']
+    REQUIRED_FIELDS = ['first_name', 'last_name', 'birthdate', 'email', 'password']
     objects = CustomUserManager()
+
+        
     
 class Category(models.Model):
     name = models.CharField(max_length = 255)

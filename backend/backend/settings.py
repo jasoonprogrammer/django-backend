@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 from datetime import timedelta
-import dj_database_url
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -27,7 +26,8 @@ SECRET_KEY = 'django-insecure-l9^q)*3q$c4=!rrf*03x+6psl!b=gs02v07ar*s@n8_pnjcsp(
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'jasoonprogrammer.pythonanywhere.com'
+    'jasoonprogrammer.pythonanywhere.com',
+    'localhost'
 ]
 
 
@@ -109,7 +109,6 @@ DATABASES = {
     }
 }
 
-# DATABASES["default"] = dj_database_url.parse("postgres://jason_djang_vite_user:K7yOtu7f2PsL32B9Y0o5Qvs9WsSiEjcT@dpg-cootnpe3e1ms73bgltj0-a.oregon-postgres.render.com/jason_djang_vite")
 
 # postgres://jason_djang_vite_user:K7yOtu7f2PsL32B9Y0o5Qvs9WsSiEjcT@dpg-cootnpe3e1ms73bgltj0-a.oregon-postgres.render.com/jason_djang_vite
 

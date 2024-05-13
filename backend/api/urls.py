@@ -13,6 +13,10 @@ urlpatterns = [
     path('product/update/<int:pk>', views.ProductUpdateAPI.as_view()),
     path('product/feature/list', views.FeatureProductListAPI.as_view()),
     path('product/feature/count/update/<int:pk>', views.update_count),
-    path('category/list', views.CategoryListAPI.as_view())
+    path('category/list', views.CategoryListAPI.as_view()),
+    path('product/<str:category>', views.CategoryProductListAPI.as_view()),
+    path('token/verify/', views.TokenVerifyAPI.as_view()),
+    path('user/list', views.UserListAPI.as_view()),
+    path('user/create/', views.UserCreateAPI.as_view())
     
 ]

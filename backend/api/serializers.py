@@ -4,6 +4,7 @@ from .models import *
 from rest_framework.response import Response
 import datetime
 from django.utils import timezone
+from .models import User
 class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
     """Customizes JWT default Serializer to add more information about user"""
     @classmethod
@@ -38,14 +39,17 @@ class TransactionSerializer(serializers.ModelSerializer):
 
 class ProductSerializer(serializers.ModelSerializer):
     image_path = serializers.SerializerMethodField()
-
+    category = serializers.SerializerMethodField()
     class Meta:
         model = Product
-        fields = ['id', 'image', 'quantity', 'name', 'price', 'image_path', 'plu']
+        fields = ['id', 'image', 'quantity', 'name', 'price', 'image_path', 'plu', 'category']
         read_only_fields = ['image_path']
 
     def get_image_path(self, obj):
         return obj.image.url
+    
+    def get_category(self, obj):
+        return obj.category.name
     
 class FetureProductSerializer(serializers.ModelSerializer):
     product = serializers.SerializerMethodField()
@@ -63,8 +67,14 @@ class CategorySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Category
-        fields = ['name', 'thumbnail']
+        fields = ['id', 'name', 'thumbnail']
 
     def get_thumbnail(self, obj):
         products = obj.product_set.all().order_by("?")[0]
         return products.image.url
+    
+class UserSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = User
+        fields = ['id', 'image', 'username', 'email', 'first_name', 'last_name', 'birthdate', 'password']
